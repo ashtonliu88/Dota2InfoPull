@@ -1,0 +1,111 @@
+- teamID: 8736661
+  teamName: Made in Philippines
+  teamWins: 243
+  teamLosses: 210
+  teamRating: 1060.31
+  teamExperience: 46246.2
+  players:
+  - personaname: heh
+    playerXP: '955.28'
+    countryCode: ph
+  - personaname: Backspace
+    playerXP: '1512.22'
+    countryCode: ''
+  - personaname: z
+    playerXP: '23597.13'
+    countryCode: ''
+  - personaname: z
+    playerXP: '5211.64'
+    countryCode: ''
+  - personaname: PMA
+    playerXP: '1076.93'
+    countryCode: ph
+  - personaname: lost
+    playerXP: '11879.20'
+    countryCode: cn
+  - personaname: PLay for fun
+    playerXP: '447.16'
+    countryCode: ''
+  - personaname: '...'
+    playerXP: '1566.64'
+    countryCode: ''
+
+- teamID: 8724829
+  teamName: HF
+  teamWins: 82
+  teamLosses: 92
+  teamRating: 992.782
+  teamExperience: 40695.71
+  players:
+  - personaname: amaz1ng
+    playerXP: '9709.76'
+    countryCode: cn
+  - personaname: mr.anderson
+    playerXP: '12550.32'
+    countryCode: ru
+  - personaname: you cant buy culture
+    playerXP: '9471.72'
+    countryCode: ru
+  - personaname: MATUMBAMAN
+    playerXP: '8963.91'
+    countryCode: ''
+
+- teamID: 6209804
+  teamName: Antarctic Penguins
+  teamWins: 574
+  teamLosses: 419
+  teamRating: 1203.4
+  teamExperience: 28297.31
+  players:
+  - personaname: Comment me please
+    playerXP: '2679.38'
+    countryCode: la
+  - personaname: "\u4E91\u73A9\u5BB6"
+    playerXP: '6830.41'
+    countryCode: cn
+  - personaname: "\u6211\u843D\u6CEA\u60C5\u7EEA\u96F6\u788E"
+    playerXP: '11851.05'
+    countryCode: ''
+  - personaname: Vendela
+    playerXP: '6936.47'
+    countryCode: ''
+
+- teamID: 8686313
+  teamName: CDUB Esports
+  teamWins: 98
+  teamLosses: 105
+  teamRating: 1013.45
+  teamExperience: 24949.34
+  players:
+  - personaname: Sanctified
+    playerXP: '8658.94'
+    countryCode: ''
+  - personaname: OddyNuff
+    playerXP: '1762.42'
+    countryCode: jo
+  - personaname: "\u042D\u0439\u0442\u043E\u0440"
+    playerXP: '7307.11'
+    countryCode: br
+  - personaname: Mark
+    playerXP: '7220.87'
+    countryCode: ''
+
+- teamID: 8525778
+  teamName: Polaris Esports
+  teamWins: 300
+  teamLosses: 234
+  teamRating: 957.848
+  teamExperience: 20708.28
+  players:
+  - personaname: Wee
+    playerXP: '6626.56'
+    countryCode: ''
+  - personaname: Fire
+    playerXP: '3584.48'
+    countryCode: ''
+  - personaname: E
+    playerXP: '6925.69'
+    countryCode: ph
+  - personaname: rex.y
+    playerXP: '3571.55'
+    countryCode: ''

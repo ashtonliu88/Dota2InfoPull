@@ -254,6 +254,11 @@ def main(inputNum, inputOutFile):
         print("Number of teams input must be greater than 0")
         return
     
+    #Checking to see if user input for outfile is in yaml format
+    if not inputOutFile.endswith(('.yaml', '.yml')):
+        print("Output file must have a .yaml or .yml extension")
+        return
+
     #load cache data
     cachedData, cacheTime = loadCache()
 
