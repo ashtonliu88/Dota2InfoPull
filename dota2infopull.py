@@ -21,6 +21,16 @@ homeURL = "https://api.opendota.com/api"
 cacheFile = "cache.json"
 cacheDuration = timedelta(minutes=5)
 
+#Retry codes implemented to check if error occurs in response status code
+#Stack overflow: https://stackoverflow.com/questions/61463224/when-to-use-raise-for-status-vs-status-code-testing for reference
+retry_codes = [
+    HTTPStatus.TOO_MANY_REQUESTS,
+    HTTPStatus.INTERNAL_SERVER_ERROR,
+    HTTPStatus.BAD_GATEWAY,
+    HTTPStatus.SERVICE_UNAVAILABLE,
+    HTTPStatus.GATEWAY_TIMEOUT,
+]
+
 #Obtain a list of all pro players
 def accessProPlayers():
     #Access openDota's api's endpoing for proPlayers and select URL of proPlayers
@@ -41,16 +51,6 @@ def accessProPlayers():
     
     return []
 
-#Retry codes implemented to check if error occurs in response status code
-#Stack overflow: https://stackoverflow.com/questions/61463224/when-to-use-raise-for-status-vs-status-code-testing for reference
-retry_codes = [
-    HTTPStatus.TOO_MANY_REQUESTS,
-    HTTPStatus.INTERNAL_SERVER_ERROR,
-    HTTPStatus.BAD_GATEWAY,
-    HTTPStatus.SERVICE_UNAVAILABLE,
-    HTTPStatus.GATEWAY_TIMEOUT,
-]
-
 #Obtain team data of specific team, using async to run all team gathering at the same time instead of one by one
 async def accessSpecificTeamData(session, teamID):
     #Access specific team player data endpoint for teamID
@@ -67,6 +67,7 @@ async def accessSpecificTeamData(session, teamID):
         try:
             async with session.get(teamsURL) as response:
 
+                #Checking if the response status code is in the retryCodes list
                 if response.status in retry_codes:
 
                     #If the response status code is not 200, add more attempts to see if everything works
@@ -87,7 +88,6 @@ async def accessSpecificTeamData(session, teamID):
         #Error handling to output if team details are not found
         except Exception as e:
             print(f"Error fetching team details for team ID {teamID}: {e}")
-
             return None
     
     
@@ -97,13 +97,13 @@ async def accessSpecificTeamData(session, teamID):
 def calculatePlayerTimeExperience(playerVar):
 
     if 'full_history_time' in playerVar:
-        try:
 
+        try:
             #Accessing the team experience time of a player and stripping it down to only up until the second without decimal
             #Microseconds are unnecessary in the grand scheme since I am reporting each team experience in hours
             historyTime = datetime.strptime(str(playerVar['full_history_time'])[0:19], "%Y-%m-%dT%H:%M:%S")
 
-
+            #Accessing current time of local machine and getting rid of microseconds to compare with historyTime
             currTime = datetime.now().replace(microsecond = 0)
         
             #Calculates the hours passed since the team experience
@@ -159,7 +159,7 @@ async def obtainProTeams():
 
 
             if playerXP is not None:
-                
+
                 teamXP += float(playerXP)
 
                 #Implement the player information first to ensure that only pro players are being accounted for
