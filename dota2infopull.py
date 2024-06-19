@@ -1,3 +1,14 @@
+# Libraries to install:
+# pip3 install python3
+# pip3 install requests
+# pip3 install PyYaml
+# pip3 install http
+# pip3 install asyncio
+# pip3 install aiohttp
+
+# HOW TO RUN:
+# python3 dota2infopull.py <n number of top teams you want to see> <output file>
+
 import yaml
 import requests
 from http import HTTPStatus
@@ -273,7 +284,7 @@ def main(inputNum, inputOutFile):
 
         #Sorting function to generate a dictionary sorted by the values of teamExperience and then only keeping up until n number of teams in the list
         sortedTeams = sorted(topTeamData.values(), key=lambda x: x['teamExperience'], reverse=True)[:inputNum]
-        
+
         YAML(sortedTeams, inputOutFile)
 
         #Success Message
