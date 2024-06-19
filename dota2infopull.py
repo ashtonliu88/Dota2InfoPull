@@ -153,9 +153,17 @@ async def obtainProTeams():
         allPlayersInfo = []
         #Calculate each pro players experience in a team
         for player in playersForTeam:
+
+            #Calculate each pro player's experience
             playerXP = calculatePlayerTimeExperience(player)
+
+
             if playerXP is not None:
+                
                 teamXP += float(playerXP)
+
+                #Implement the player information first to ensure that only pro players are being accounted for
+
                 allPlayersInfo.append({
                     'personaname': player['personaname'],
                     'playerXP': playerXP,
@@ -163,6 +171,7 @@ async def obtainProTeams():
                 })
 
         teamXP = round(teamXP, 2)
+
 
         teamXPDictionary[teamID] = {
             'teamID': teamID,
@@ -179,11 +188,16 @@ async def obtainProTeams():
 #Yaml function to yaml data gained
 def YAML (data, outFile):
     with open(outFile, 'w') as file:
+
+        #Accessing yaml to dump the information obtained from obtainProTeams() into an output file
         yaml_string = yaml.dump(data, default_flow_style=False, sort_keys=False)
-        yaml_string = yaml_string.replace("\n- ", "\n\n- ")  # Add a newline before each team entry
+
+        #Adds new line before each team to make it easier to read
+        yaml_string = yaml_string.replace("\n- ", "\n\n- ")
+
         file.write(yaml_string)
 
-#Loading the cache so that it doesn't request too often
+#Function to load the cache so that it doesn't request too often
 def loadCache():
     if os.path.exists(cacheFile):
         with open(cacheFile, 'r') as file:
@@ -192,6 +206,7 @@ def loadCache():
             return cacheData['data'], cacheTime
     return None, None
 
+#Function to save cache to cache.json
 def saveCache(data):
     with open(cacheFile, 'w') as file:
         cacheData = {
@@ -200,10 +215,10 @@ def saveCache(data):
         }
         json.dump(cacheData, file)
 
+#Function to check if the cache time and the time now has been over 5 minutes
 def isCacheExpired(cacheTime):
     if cacheTime:
         return datetime.now() - cacheTime > cacheDuration
-    
     return True
         
 
@@ -224,7 +239,9 @@ def main(inputNum, inputOutFile):
         #Running asyncio with my asynch function to have all team information gathered at once
         topTeamData = asyncio.run(obtainProTeams())
 
+        #Checking to see if topTeamData exists
         if topTeamData:
+            #Saving new data request pull to cache
             saveCache(topTeamData)
             print("Saved new data to cache")
         else:
