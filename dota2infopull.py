@@ -68,7 +68,9 @@ async def accessSpecificTeamData(session, teamID):
 
                     #If the response status code is not 200, add more attempts to see if everything works
                     if attempt < retries - 1:
-                        print(f"Retrying team {teamID} in {retryDelay} seconds...")
+                        #Test output to make sure retries work
+                        #print(f"Retrying team {teamID} in {retryDelay} seconds...")
+
                         #Wait for retry_delay seconds
                         await asyncio.sleep(retryDelay)
                         #Exponential backoff
@@ -83,7 +85,8 @@ async def accessSpecificTeamData(session, teamID):
             
         #Error handling to output if team details are not found
         except Exception as e:
-            print(f"Error fetching team details for team ID {teamID}: {e}")
+            #Print line to check if error fetching team details
+            #print(f"Error fetching team details for team ID {teamID}: {e}")
             return None
     
 
@@ -114,7 +117,7 @@ def calculatePlayerTimeExperience(playerVar):
             
         #Mainly here for seeing if NONE exists as a player experience placeholder for some players
         except ValueError as e:
-            print(f"Error parsing time, {playerVar['account_id']} does not have full_history_time: {e}")
+            #print(f"Error parsing time, {playerVar['account_id']} does not have full_history_time: {e}")
             return None
     
     else:
@@ -141,7 +144,9 @@ async def obtainProTeams():
 
         #Make sure team data exists
         if teamData is None:
-            print(f"Skipping team ID {teamID} due to fetch error, data for {teamID} not found")
+            #Test print method to check if a team id is skipped
+            #print(f"Skipping team ID {teamID} due to fetch error, data for {teamID} not found")
+            
             continue
     
         #Specifically targets pro players in each team to not confuse other non-pro players in the team
@@ -214,7 +219,7 @@ def saveCache(data):
 #Function to check if the cache time and the time now has been over 5 minutes
 def isCacheExpired(cacheTime):
     if cacheTime:
-        return datetime.now() - cacheTime > cacheDuration
+        return (datetime.now() - cacheTime) > cacheDuration
     return True
         
 
@@ -225,12 +230,16 @@ def main(inputNum, inputOutFile):
         print("Number of teams input must be greater than 0")
         return
     
+    #load cache data
     cachedData, cacheTime = loadCache()
+
+    #Check to see if cache data needs to be refreshed
     if cachedData and not isCacheExpired(cacheTime):
         topTeamData  = cachedData
         print("Using Cache Data, cache will refresh after 5 minutes from first use")
         timeElapsed = datetime.now() - cacheTime
         print(f"Time elapsed since recent cache refresh: {timeElapsed}")
+
     else:
         #Running asyncio with my asynch function to have all team information gathered at once
         topTeamData = asyncio.run(obtainProTeams())
@@ -266,7 +275,7 @@ if __name__ == "__main__":
 
     #Making sure user inputs correct input format
     if len(sys.argv) != 3:
-        print("python script should be run like this: python dota2infopull.py <top_n_team> <outFile>")
+        print("python script should be run like this: python dota2infopull.py <top N teams> <outFile>")
     else:
         topNum = int(sys.argv[1])
         outFile = sys.argv[2]
