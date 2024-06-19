@@ -15,9 +15,11 @@ import json
 
 homeURL = "https://api.opendota.com/api"
 
-#I have decided to cache the data and store the information so that each time the program runs it doesn't request it each time
+#I have decided to cache the data and store the information so that each time the program runs it doesn't request it each time.
 #This decision was based off of video games and how the top leaderboards don't update immediately, but more after a certain time so that
-#the system doesn't crash
+#the system doesn't crash.
+#Furthermore, if a user wants to access the leaderboard multiple times in a row and I don't set up a cache system, they would be met with invalid
+#response codes because there would be too many request in a given time period.
 cacheFile = "cache.json"
 cacheDuration = timedelta(minutes=5)
 
@@ -271,12 +273,14 @@ def main(inputNum, inputOutFile):
 
         #Sorting function to generate a dictionary sorted by the values of teamExperience and then only keeping up until n number of teams in the list
         sortedTeams = sorted(topTeamData.values(), key=lambda x: x['teamExperience'], reverse=True)[:inputNum]
+        
         YAML(sortedTeams, inputOutFile)
+
         #Success Message
         print(f"Saved top {inputNum} teams to {inputOutFile}")
 
     else:
-        #Fail Message
+        #Fail Message to check if daily limit is reached for Dota2API
         print(f"Failed to process data. Check API")
 
     return
