@@ -36,8 +36,8 @@ def accessProPlayers():
     #Access openDota's api's endpoing for proPlayers and select URL of proPlayers
     proPlayerURL = f"{homeURL}/proPlayers"
 
+    #Access response from proPlayerURL
     try:
-        #Obtain response of 200 to make sure systems are up
         response = requests.get(proPlayerURL, timeout = 5)
         response.raise_for_status()
         time.sleep(0.1)
@@ -45,7 +45,6 @@ def accessProPlayers():
     
     except Exception as e:
         print(f"Failed to retrive players, response code: {response.status_code}")
-        
     return []
 
 #Obtain team data of specific team, using async to run all team gathering at the same time instead of one by one
@@ -87,10 +86,9 @@ async def accessSpecificTeamData(session, teamID):
             print(f"Error fetching team details for team ID {teamID}: {e}")
             return None
     
-    
 
 #This function calculates the experience time in hours for a player since video games mainly show statistics in hours
-#I first take off the microseconds since it is irrelevant in the long run and only obtain the date, hour, minute, and second
+#I first take off the microseconds since it is irrelevant in the final output of the program and only obtain the date, hour, minute, and second
 def calculatePlayerTimeExperience(playerVar):
 
     #Check to see if full_history_time is found in players
@@ -157,13 +155,11 @@ async def obtainProTeams():
             #Calculate each pro player's experience
             playerXP = calculatePlayerTimeExperience(player)
 
-
             if playerXP is not None:
 
                 teamXP += float(playerXP)
 
                 #Implement the player information first to ensure that only pro players are being accounted for
-
                 allPlayersInfo.append({
                     'personaname': player['personaname'],
                     'playerXP': playerXP,
@@ -172,7 +168,7 @@ async def obtainProTeams():
 
         teamXP = round(teamXP, 2)
 
-
+        #Create the dictionary for each new team accounted for
         teamXPDictionary[teamID] = {
             'teamID': teamID,
             'teamName': teamData.get('name', 'Unknown Team'),
@@ -244,17 +240,21 @@ def main(inputNum, inputOutFile):
             #Saving new data request pull to cache
             saveCache(topTeamData)
             print("Saved new data to cache")
+    
         else:
+            #Check if too many requests have been pulled and program can't access dota2API
             print(f"Failed to process data. Check API")
             return
 
     #Checking if I can obtain all the information or if the API doesn't allow me to access more information due to lack of API key
     if topTeamData:
+
         #Sorting function to generate a dictionary sorted by the values of teamExperience and then only keeping up until n number of teams in the list
         sortedTeams = sorted(topTeamData.values(), key=lambda x: x['teamExperience'], reverse=True)[:inputNum]
         YAML(sortedTeams, inputOutFile)
         #Success Message
         print(f"Saved top {inputNum} teams to {inputOutFile}")
+
     else:
         #Fail Message
         print(f"Failed to process data. Check API")
