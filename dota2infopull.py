@@ -43,6 +43,7 @@ def accessProPlayers():
         time.sleep(0.1)
         return response.json()
     
+    #Exception error to check if too many requests for free dota API trial
     except Exception as e:
         print(f"Failed to retrive players, response code: {response.status_code}")
     return []
@@ -61,6 +62,7 @@ async def accessSpecificTeamData(session, teamID):
     for attempt in range(retries):
 
         try:
+            #Using async to set up a session per response
             async with session.get(teamsURL) as response:
 
                 #Checking if the response status code is in the retryCodes list
@@ -68,11 +70,13 @@ async def accessSpecificTeamData(session, teamID):
 
                     #If the response status code is not 200, add more attempts to see if everything works
                     if attempt < retries - 1:
+
                         #Test output to make sure retries work
                         #print(f"Retrying team {teamID} in {retryDelay} seconds...")
 
                         #Wait for retry_delay seconds
                         await asyncio.sleep(retryDelay)
+
                         #Exponential backoff
                         retryDelay *= backoffFactor
                         continue
@@ -85,13 +89,16 @@ async def accessSpecificTeamData(session, teamID):
             
         #Error handling to output if team details are not found
         except Exception as e:
+
             #Print line to check if error fetching team details
             #print(f"Error fetching team details for team ID {teamID}: {e}")
+
             return None
     
 
 #This function calculates the experience time in hours for a player since video games mainly show statistics in hours
 #I first take off the microseconds since it is irrelevant in the final output of the program and only obtain the date, hour, minute, and second
+#My program does not account for players without a full_history_time and takes them out of consideration
 def calculatePlayerTimeExperience(playerVar):
 
     #Check to see if full_history_time is found in players
@@ -117,6 +124,7 @@ def calculatePlayerTimeExperience(playerVar):
             
         #Mainly here for seeing if NONE exists as a player experience placeholder for some players
         except ValueError as e:
+            #Test print statement to check if an account ID doesn't have a full_history_time
             #print(f"Error parsing time, {playerVar['account_id']} does not have full_history_time: {e}")
             return None
     
@@ -136,7 +144,9 @@ async def obtainProTeams():
 
     #Creates a client session with asyncio and aiohttp
     async with aiohttp.ClientSession() as session:
+        #Creating task of accessing each team's id to run asynchronously with each other
         tasks = [accessSpecificTeamData(session, team_id) for team_id in teamIDs]
+        #Obtains the data list of teams from the task
         teamDataList = await asyncio.gather(*tasks)
 
     #Iterating through each team data and team id
@@ -144,9 +154,10 @@ async def obtainProTeams():
 
         #Make sure team data exists
         if teamData is None:
+            
             #Test print method to check if a team id is skipped
             #print(f"Skipping team ID {teamID} due to fetch error, data for {teamID} not found")
-            
+
             continue
     
         #Specifically targets pro players in each team to not confuse other non-pro players in the team
