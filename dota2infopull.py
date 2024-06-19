@@ -36,19 +36,16 @@ def accessProPlayers():
     #Access openDota's api's endpoing for proPlayers and select URL of proPlayers
     proPlayerURL = f"{homeURL}/proPlayers"
 
-    #Obtain response of 200 to make sure systems are up
-    response = requests.get(proPlayerURL)
-
-    #Check if the status code is 200 to see if systems are up
-    if response.status_code == 200:
+    try:
+        #Obtain response of 200 to make sure systems are up
+        response = requests.get(proPlayerURL, timeout = 5)
+        response.raise_for_status()
         time.sleep(0.1)
-        #Return the list of pro players in a .json format
         return response.json()
     
-    #Output message if status code is not 200, signifying that system is not working
-    else:
+    except Exception as e:
         print(f"Failed to retrive players, response code: {response.status_code}")
-    
+        
     return []
 
 #Obtain team data of specific team, using async to run all team gathering at the same time instead of one by one
@@ -96,6 +93,7 @@ async def accessSpecificTeamData(session, teamID):
 #I first take off the microseconds since it is irrelevant in the long run and only obtain the date, hour, minute, and second
 def calculatePlayerTimeExperience(playerVar):
 
+    #Check to see if full_history_time is found in players
     if 'full_history_time' in playerVar:
 
         try:
