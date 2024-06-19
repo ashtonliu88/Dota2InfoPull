@@ -128,9 +128,11 @@ def calculatePlayerTimeExperience(playerVar):
 #Implementing asyncio function to make this more efficient
 async def obtainProTeams():
 
+    #Creating dictionary and list
     teamXPDictionary = {}
     proPlayerList = accessProPlayers()
 
+    #Obtain the team id for each pro player if applicable
     teamIDs = set(player['team_id'] for player in proPlayerList if player['team_id'])
 
     #Creates a client session with asyncio and aiohttp
