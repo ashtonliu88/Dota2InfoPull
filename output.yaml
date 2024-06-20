@@ -3,29 +3,29 @@
   teamWins: 243
   teamLosses: 210
   teamRating: 1060.31
-  teamExperience: 46307.4
+  teamExperience: 46381.24
   players:
   - personaname: heh
-    playerXP: '962.93'
+    playerXP: '972.16'
     countryCode: ph
   - personaname: Backspace
-    playerXP: '1519.87'
+    playerXP: '1529.10'
     countryCode: ''
   - personaname: z
-    playerXP: '23604.78'
+    playerXP: '23614.01'
     countryCode: ''
   - personaname: z
-    playerXP: '5219.29'
+    playerXP: '5228.52'
     countryCode: ''
   - personaname: PMA
-    playerXP: '1084.58'
+    playerXP: '1093.81'
     countryCode: ph
   - personaname: lost
-    playerXP: '11886.85'
+    playerXP: '11896.08'
     countryCode: cn
   - personaname: PLay for fun
-    playerXP: '454.81'
+    playerXP: '464.04'
     countryCode: ''
   - personaname: '...'
-    playerXP: '1574.29'
+    playerXP: '1583.52'
     countryCode: ''

@@ -65,7 +65,7 @@ def accessProPlayers():
 # Function to calculate exponential backoff with jitter
 def exponential_backoff_with_jitter(attempt):
     
-    base_delay=3
+    base_delay=10
     max_delay=30
 
     delay = base_delay * (2 ** attempt)
