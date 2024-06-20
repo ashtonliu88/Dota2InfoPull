@@ -11,6 +11,7 @@
 
 import yaml
 import requests
+import random
 from http import HTTPStatus
 
 import time
@@ -61,15 +62,26 @@ def accessProPlayers():
         print(f"Failed to retrive players, response code: {response.status_code}")
     return []
 
+
+# Function to calculate exponential backoff with jitter
+def exponential_backoff_with_jitter(attempt):
+    
+    base_delay=2
+    max_delay=60
+
+    delay = base_delay * (2 ** attempt)
+    jitter = random.uniform(0, 1)
+    wait_time = delay + jitter
+    return min(wait_time, max_delay)
+
+
 #Obtain team data of specific team, using async to run all team gathering at the same time instead of one by one
 async def accessSpecificTeamData(session, teamID):
     #Access specific team player data endpoint for teamID
     teamsURL = f"{homeURL}/teams/{teamID}"
 
     #Retry time active in case server cant obtain info
-    retries = 3
-    backoffFactor = 2
-    retryDelay= 1
+    retries = 6
 
     #Classifying for loop to give the program 3 retries if status code is not 200
     for attempt in range(retries):
@@ -83,15 +95,13 @@ async def accessSpecificTeamData(session, teamID):
 
                     #If the response status code is not 200, add more attempts to see if everything works
                     if attempt < retries - 1:
-
-                        #Test output to make sure retries work
-                        #print(f"Retrying team {teamID} in {retryDelay} seconds...")
+                        waitTime = exponential_backoff_with_jitter(attempt)
+                        print(f"Retrying team {teamID} in {waitTime:.2f} seconds...")
 
                         #Wait for retry_delay seconds
-                        await asyncio.sleep(retryDelay)
+                        await asyncio.sleep(waitTime)
 
                         #Exponential backoff
-                        retryDelay *= backoffFactor
                         continue
 
                 #Return the response object if response is successful
@@ -102,9 +112,14 @@ async def accessSpecificTeamData(session, teamID):
             
         #Error handling to output if team details are not found
         except Exception as e:
+            if response.status in retry_codes and attempt < retries - 1:
+                wait_time = exponential_backoff_with_jitter(attempt)
+                print(f"Error fetching team details for team ID {teamID}: {e}. Retrying in {wait_time:.2f} seconds...")
+                await asyncio.sleep(wait_time)
+                continue
 
             #Print line to check if error fetching team details
-            #print(f"Error fetching team details for team ID {teamID}: {e}")
+            print(f"Error fetching team details for team ID {teamID}: {e}. No More retries")
 
             return None
     
@@ -256,6 +271,7 @@ def isCacheExpired(cacheTime):
 
 #Main function to take in input N number of teams as well as input file
 def main(inputNum, inputOutFile):
+    topTeamData = {}
     if inputNum <= 0:
         print("Number of teams input must be greater than 0")
         return
@@ -280,23 +296,23 @@ def main(inputNum, inputOutFile):
         topTeamData = asyncio.run(obtainProTeams())
 
         #Checking to see if topTeamData exists
-        if topTeamData:
+        if topTeamData and inputNum <= len(topTeamData):
             #Saving new data request pull to cache
             saveCache(topTeamData)
             print("Saved new data to cache")
     
         else:
             #Check if too many requests have been pulled and program can't access dota2API
-            print(f"Failed to process data. Check API")
+            print(f"Failed to process data or input number too big. Check API")
             return
         
     if inputNum > len(topTeamData):
-        print(f"Inputted in too many teams")
+        print(f"Input number too large, maximum number of teams is: {len(topTeamData)}")
         return
     
     #Sorting function to generate a dictionary sorted by the values of teamExperience and then only keeping up until n number of teams in the list
     sortedTeams = sorted(topTeamData.values(), key=lambda x: x['teamExperience'], reverse=True)[:inputNum]
-
+    
     YAML(sortedTeams, inputOutFile)
 
     #Success Message

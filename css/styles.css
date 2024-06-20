@@ -1,0 +1,41 @@
+body {
+    font-family: 'Candara';
+    margin: 20px;
+    background-color: #1c2e4a;
+    color: white;
+}
+.header {
+    display: flex;
+    align-items: center;
+}
+.header img {
+    height: 50px;
+    margin-right: 20px;
+}
+.team {
+    border: 5px solid #ccc;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 24px;
+}
+.team h2 {
+    margin-top: 0;
+    text-align:center;
+    font-size: 75px;
+    margin-bottom: 10px;
+}
+.team h3 {
+    margin-top: 0;
+    text-align:center;
+    font-size: 55px;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+.player {
+    margin-left: 20px;
+    text-align:center;
+    
+}

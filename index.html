@@ -4,29 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top N Teams Dota 2 Viewer</title>
-    <style>
-        body {
-            font-family: 'Candara';
-            margin: 20px;
-        }
-        .team {
-            border: 1px solid #ccc;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
-        .team h2 {
-            margin-top: 0;
-        }
-        .player {
-            margin-left: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href = "css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
 </head>
 
 <body>
-    <h1>Top N Pro Teams in DOTA 2</h1>
+
+    <div class="header">
+        <img src="photos/Dota-2-Logo.png" alt="Dota 2 Logo">
+        <h1>Top N Pro Teams in DOTA 2</h1>
+    </div>
     <div id="teams-container"></div>
 
     <script>
@@ -47,20 +34,14 @@
                 teamDiv.classList.add('team');
                 teamDiv.innerHTML = `
                     <h2>${index + 1}. ${team.teamName}</h2>
-                    <p><strong>ID:</strong> ${team.teamID}</p>
-                    <p><strong>Wins:</strong> ${team.teamWins}</p>
-                    <p><strong>Losses:</strong> ${team.teamLosses}</p>
-                    <p><strong>Rating:</strong> ${team.teamRating}</p>
-                    <p><strong>Experience:</strong> ${team.teamExperience} hours</p>
-                    <h3>Players</h3>
+                    <p><strong>ID:</strong> ${team.teamID} | <strong>Wins:</strong> ${team.teamWins} | <strong>Losses:</strong> ${team.teamLosses} | <strong>Rating:</strong> ${team.teamRating} | <strong>Team Experience:</strong> ${team.teamExperience} hours</p>
+                    <h3>Players:</h3>
                 `;
                 team.players.forEach(player => {
                     const playerDiv = document.createElement('div');
                     playerDiv.classList.add('player');
                     playerDiv.innerHTML = `
-                        <p><strong>Name:</strong> ${player.personaname}</p>
-                        <p><strong>Experience:</strong> ${player.playerXP} hours</p>
-                        <p><strong>Country:</strong> ${player.countryCode}</p>
+                        <p><strong>Name:</strong> ${player.personaname} | <strong>Experience:</strong> ${player.playerXP} hours | <strong>Country:</strong> ${player.countryCode}</p>
                     `;
                     teamDiv.appendChild(playerDiv);
                 });
