@@ -33,7 +33,7 @@ homeURL = "https://api.opendota.com/api"
 #Furthermore, if a user wants to access the leaderboard multiple times in a row and I don't set up a cache system, they would be met with invalid
 #response codes because there would be too many request in a given time period.
 cacheFile = "cache.json"
-cacheDuration = timedelta(minutes=5)
+cacheDuration = timedelta(minutes=3)
 
 #Retry codes implemented to check if error occurs in response status code
 #Stack overflow: https://stackoverflow.com/questions/61463224/when-to-use-raise-for-status-vs-status-code-testing for reference
@@ -47,26 +47,33 @@ retry_codes = [
 
 #Obtain a list of all pro players
 def accessProPlayers():
-    #Access openDota's api's endpoing for proPlayers and select URL of proPlayers
     proPlayerURL = f"{homeURL}/proPlayers"
+    retries = 3
 
-    #Access response from proPlayerURL
-    try:
-        response = requests.get(proPlayerURL, timeout = 5)
-        response.raise_for_status()
-        time.sleep(0.1)
-        return response.json()
-    
-    #Exception error to check if too many requests for free dota API trial
-    except Exception as e:
-        print(f"Failed to retrive players, response code: {response.status_code}")
+    for attempt in range(retries):
+        try:
+            response = requests.get(proPlayerURL, timeout=5)
+            response.raise_for_status()
+            time.sleep(0.1)
+            return response.json()
+
+        except requests.exceptions.RequestException as e:
+            if isinstance(e, requests.HTTPError) and e.response.status_code in retry_codes:
+                if attempt < retries - 1:
+                    wait_time = exponential_backoff_with_jitter(attempt)
+                    print(f"Retrying accessProPlayers in {wait_time:.2f} seconds...")
+                    time.sleep(wait_time)
+                    continue
+            print(f"Failed to retrieve pro players: {e}")
+            return []
+
     return []
 
 
 # Function to calculate exponential backoff with jitter
 def exponential_backoff_with_jitter(attempt):
     
-    base_delay=2
+    base_delay=5
     max_delay=60
 
     delay = base_delay * (2 ** attempt)
