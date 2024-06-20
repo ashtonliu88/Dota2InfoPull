@@ -175,6 +175,10 @@ async def obtainProTeams():
     
         #Specifically targets pro players in each team to not confuse other non-pro players in the team
         playersForTeam = [player for player in proPlayerList if player['team_id'] == teamID]
+
+        if not playersForTeam:
+            continue
+
         teamXP = 0
 
         allPlayersInfo = []
@@ -208,7 +212,10 @@ async def obtainProTeams():
             'players': allPlayersInfo
         }
 
-    return teamXPDictionary
+    filteredTeamXPDictionary = {team_id: team_data for team_id, team_data in teamXPDictionary.items() if team_data.get('players')}
+
+    return filteredTeamXPDictionary
+
 
 #Yaml function to yaml data gained
 def YAML (data, outFile):
@@ -249,14 +256,13 @@ def isCacheExpired(cacheTime):
 
 #Main function to take in input N number of teams as well as input file
 def main(inputNum, inputOutFile):
-
     if inputNum <= 0:
         print("Number of teams input must be greater than 0")
         return
     
     #Checking to see if user input for outfile is in yaml format
-    if not inputOutFile.endswith(('.yaml', '.yml')):
-        print("Output file must have a .yaml or .yml extension")
+    if not inputOutFile == "output.yaml":
+        print("Output file must be output.yaml")
         return
 
     #load cache data
@@ -283,21 +289,18 @@ def main(inputNum, inputOutFile):
             #Check if too many requests have been pulled and program can't access dota2API
             print(f"Failed to process data. Check API")
             return
+        
+    if inputNum > len(topTeamData):
+        print(f"Inputted in too many teams")
+        return
+    
+    #Sorting function to generate a dictionary sorted by the values of teamExperience and then only keeping up until n number of teams in the list
+    sortedTeams = sorted(topTeamData.values(), key=lambda x: x['teamExperience'], reverse=True)[:inputNum]
 
-    #Checking if I can obtain all the information or if the API doesn't allow me to access more information due to lack of API key
-    if topTeamData:
+    YAML(sortedTeams, inputOutFile)
 
-        #Sorting function to generate a dictionary sorted by the values of teamExperience and then only keeping up until n number of teams in the list
-        sortedTeams = sorted(topTeamData.values(), key=lambda x: x['teamExperience'], reverse=True)[:inputNum]
-
-        YAML(sortedTeams, inputOutFile)
-
-        #Success Message
-        print(f"Saved top {inputNum} teams to {inputOutFile}")
-
-    else:
-        #Fail Message to check if daily limit is reached for Dota2API
-        print(f"Failed to process data. Check API")
+    #Success Message
+    print(f"Saved top {inputNum} teams to {inputOutFile}")
 
     return
 

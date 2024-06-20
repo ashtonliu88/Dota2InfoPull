@@ -1,7 +1,17 @@
-COMMANDS TO RUN:
+DEPENDENCIES TO INSTALL:
 
-pip3 install python3, requests, PyYaml, http, asyncio, aiohttp
+pip3 install python3
+pip3 install requests
+pip3 install PyYaml
+pip3 install http
+pip3 install asyncio
+pip3 install aiohttp
 
 HOW TO RUN:
 
-python3 dota2infopull.py "n number of top teams you want to see" "output file"
+Run these commands in terminal in this directory:
+
+    python3 dota2infopull.py "top N teams" output.yaml
+    python -m http.server 8000
+
+Then type http://localhost:8000/index.html in any web browser to view as a website
