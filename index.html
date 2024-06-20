@@ -12,7 +12,7 @@
 
     <div class="header">
         <img src="photos/Dota-2-Logo.png" alt="Dota 2 Logo">
-        <h1>Top N Pro Teams in DOTA 2</h1>
+        <h1>Top N Pro Teams in DOTA 2 (Built by Ashton Liu)</h1>
     </div>
     <div id="teams-container"></div>
 
@@ -41,7 +41,7 @@
                     const playerDiv = document.createElement('div');
                     playerDiv.classList.add('player');
                     playerDiv.innerHTML = `
-                        <p><strong>Name:</strong> ${player.personaname} | <strong>Experience:</strong> ${player.playerXP} hours | <strong>Country:</strong> ${player.countryCode}</p>
+                        <p>- <strong>Name:</strong> ${player.personaname} | <strong>Experience:</strong> ${player.playerXP} hours | <strong>Country:</strong> ${player.countryCode}</p>
                     `;
                     teamDiv.appendChild(playerDiv);
                 });

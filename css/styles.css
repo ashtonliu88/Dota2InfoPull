@@ -10,7 +10,7 @@ body {
 }
 .header img {
     height: 50px;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 .team {
     border: 5px solid #ccc;
@@ -37,5 +37,4 @@ body {
 .player {
     margin-left: 20px;
     text-align:center;
-    
 }

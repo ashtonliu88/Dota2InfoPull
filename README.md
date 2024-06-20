@@ -1,11 +1,6 @@
 DEPENDENCIES TO INSTALL:
 
-pip3 install python3
-pip3 install requests
-pip3 install PyYaml
-pip3 install http
-pip3 install asyncio
-pip3 install aiohttp
+python3, requests, PyYaml, http, asyncio, aiohttp
 
 HOW TO RUN:
 
