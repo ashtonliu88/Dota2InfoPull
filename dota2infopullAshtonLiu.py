@@ -33,7 +33,7 @@ homeURL = "https://api.opendota.com/api"
 #Furthermore, if a user wants to access the leaderboard multiple times in a row and I don't set up a cache system, they would be met with invalid
 #response codes because there would be too many request in a given time period.
 cacheFile = "cache.json"
-cacheDuration = timedelta(minutes=3)
+cacheDuration = timedelta(minutes=10)
 
 #Retry codes implemented to check if error occurs in response status code
 #Stack overflow: https://stackoverflow.com/questions/61463224/when-to-use-raise-for-status-vs-status-code-testing for reference
@@ -48,33 +48,25 @@ retry_codes = [
 #Obtain a list of all pro players
 def accessProPlayers():
     proPlayerURL = f"{homeURL}/proPlayers"
-    retries = 3
 
-    for attempt in range(retries):
-        try:
-            response = requests.get(proPlayerURL, timeout=5)
-            response.raise_for_status()
-            time.sleep(0.1)
-            return response.json()
+    try:
+        response = requests.get(proPlayerURL, timeout=5)
+        response.raise_for_status()
+        time.sleep(0.1)
+        return response.json()
 
-        except requests.exceptions.RequestException as e:
-            if isinstance(e, requests.HTTPError) and e.response.status_code in retry_codes:
-                if attempt < retries - 1:
-                    wait_time = exponential_backoff_with_jitter(attempt)
-                    print(f"Retrying accessProPlayers in {wait_time:.2f} seconds...")
-                    time.sleep(wait_time)
-                    continue
-            print(f"Failed to retrieve pro players: {e}")
-            return []
-
+    except requests.exceptions.RequestException as e:
+        print(f"Failed to retrieve pro players: {e}")
+        
     return []
+
 
 
 # Function to calculate exponential backoff with jitter
 def exponential_backoff_with_jitter(attempt):
     
-    base_delay=5
-    max_delay=60
+    base_delay=3
+    max_delay=30
 
     delay = base_delay * (2 ** attempt)
     jitter = random.uniform(0, 1)
@@ -88,7 +80,7 @@ async def accessSpecificTeamData(session, teamID):
     teamsURL = f"{homeURL}/teams/{teamID}"
 
     #Retry time active in case server cant obtain info
-    retries = 6
+    retries = 10
 
     #Classifying for loop to give the program 3 retries if status code is not 200
     for attempt in range(retries):
@@ -294,7 +286,7 @@ def main(inputNum, inputOutFile):
     #Check to see if cache data needs to be refreshed
     if cachedData and not isCacheExpired(cacheTime):
         topTeamData  = cachedData
-        print("Using Cache Data, cache will refresh after 5 minutes from first use")
+        print(f"Using Cache Data, cache will refresh after {cacheDuration} minutes from first use")
         timeElapsed = datetime.now() - cacheTime
         print(f"Time elapsed since recent cache refresh: {timeElapsed}")
 
