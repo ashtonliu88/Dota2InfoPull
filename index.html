@@ -37,11 +37,11 @@
                     <p><strong>ID:</strong> ${team.teamID} | <strong>Wins:</strong> ${team.teamWins} | <strong>Losses:</strong> ${team.teamLosses} | <strong>Rating:</strong> ${team.teamRating} | <strong>Team Experience:</strong> ${team.teamExperience} hours</p>
                     <h3>Players:</h3>
                 `;
-                team.players.forEach(player => {
+                team.players.forEach((player, index) => {
                     const playerDiv = document.createElement('div');
                     playerDiv.classList.add('player');
                     playerDiv.innerHTML = `
-                        <p>- <strong>Name:</strong> ${player.personaname} | <strong>Experience:</strong> ${player.playerXP} hours | <strong>Country:</strong> ${player.countryCode}</p>
+                        <p>${index + 1}. <strong>Name:</strong> ${player.personaname} | <strong>Experience:</strong> ${player.playerXP} hours | <strong>Country:</strong> ${player.countryCode}</p>
                     `;
                     teamDiv.appendChild(playerDiv);
                 });

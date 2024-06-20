@@ -213,6 +213,8 @@ async def obtainProTeams():
                     'countryCode': player['country_code']
                 })
 
+        allPlayersInfo = sorted(allPlayersInfo, key=lambda x: x['playerXP'], reverse=True)
+        
         teamXP = round(teamXP, 2)
 
         #Create the dictionary for each new team accounted for
