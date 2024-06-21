@@ -29,3 +29,553 @@
   - personaname: PMA
     playerXP: '1101.44'
     countryCode: ph
+
+- teamID: 8724829
+  teamName: HF
+  teamWins: 82
+  teamLosses: 92
+  teamRating: 992.782
+  teamExperience: 40793.76
+  players:
+  - personaname: amaz1ng
+    playerXP: '9734.27'
+    countryCode: cn
+  - personaname: you cant buy culture
+    playerXP: '9496.23'
+    countryCode: ru
+  - personaname: MATUMBAMAN
+    playerXP: '8988.42'
+    countryCode: ''
+  - personaname: mr.anderson
+    playerXP: '12574.84'
+    countryCode: ru
+
+- teamID: 6209804
+  teamName: Antarctic Penguins
+  teamWins: 574
+  teamLosses: 419
+  teamRating: 1203.4
+  teamExperience: 28395.36
+  players:
+  - personaname: Vendela
+    playerXP: '6960.98'
+    countryCode: ''
+  - personaname: "\u4E91\u73A9\u5BB6"
+    playerXP: '6854.92'
+    countryCode: cn
+  - personaname: Comment me please
+    playerXP: '2703.89'
+    countryCode: la
+  - personaname: "\u6211\u843D\u6CEA\u60C5\u7EEA\u96F6\u788E"
+    playerXP: '11875.57'
+    countryCode: ''
+
+- teamID: 8686313
+  teamName: CDUB Esports
+  teamWins: 98
+  teamLosses: 105
+  teamRating: 1013.45
+  teamExperience: 25047.39
+  players:
+  - personaname: Sanctified
+    playerXP: '8683.45'
+    countryCode: ''
+  - personaname: "\u042D\u0439\u0442\u043E\u0440"
+    playerXP: '7331.62'
+    countryCode: br
+  - personaname: Mark
+    playerXP: '7245.38'
+    countryCode: ''
+  - personaname: OddyNuff
+    playerXP: '1786.94'
+    countryCode: jo
+
+- teamID: 8525778
+  teamName: Polaris Esports
+  teamWins: 300
+  teamLosses: 234
+  teamRating: 957.848
+  teamExperience: 20806.35
+  players:
+  - personaname: E
+    playerXP: '6950.21'
+    countryCode: ph
+  - personaname: Wee
+    playerXP: '6651.08'
+    countryCode: ''
+  - personaname: Fire
+    playerXP: '3608.99'
+    countryCode: ''
+  - personaname: rex.y
+    playerXP: '3596.07'
+    countryCode: ''
+
+- teamID: 8702318
+  teamName: Qhali
+  teamWins: 164
+  teamLosses: 189
+  teamRating: 1010.6
+  teamExperience: 20697.43
+  players:
+  - personaname: "\u041B\u0443"
+    playerXP: '850.04'
+    countryCode: pe
+  - personaname: ArzenT
+    playerXP: '818.49'
+    countryCode: pe
+  - personaname: "\u115Alft4"
+    playerXP: '758.69'
+    countryCode: ''
+  - personaname: '9'
+    playerXP: '5635.53'
+    countryCode: pe
+  - personaname: lack of decency*)
+    playerXP: '474.05'
+    countryCode: pe
+  - personaname: '>'
+    playerXP: '433.19'
+    countryCode: pe
+  - personaname: ABCDEFGHIJKLMN1
+    playerXP: '3622.41'
+    countryCode: pe
+  - personaname: Jackboy
+    playerXP: '2999.59'
+    countryCode: bo
+  - personaname: "\uCC0C\uB9BF, \uCC0C\uB9BF, \uCC0C\uB9BF, \uCC0C\uB9BF"
+    playerXP: '20.41'
+    countryCode: pe
+  - personaname: Broez
+    playerXP: '1818.69'
+    countryCode: pe
+  - personaname: iZONE rm
+    playerXP: '1745.32'
+    countryCode: pe
+  - personaname: Spare the Sympathy
+    playerXP: '1521.02'
+    countryCode: ''
+
+- teamID: 8737621
+  teamName: 'Lava Esports '
+  teamWins: 188
+  teamLosses: 195
+  teamRating: 965.327
+  teamExperience: 14764.8
+  players:
+  - personaname: Leadblast
+    playerXP: '417.55'
+    countryCode: cl
+  - personaname: '212121'
+    playerXP: '3703.66'
+    countryCode: pe
+  - personaname: xdgamesenjoyer)
+    playerXP: '3618.78'
+    countryCode: pe
+  - personaname: Chanel
+    playerXP: '329.10'
+    countryCode: ''
+  - personaname: Hamlet
+    playerXP: '2737.82'
+    countryCode: pe
+  - personaname: only3
+    playerXP: '2687.03'
+    countryCode: ''
+  - personaname: Empathy
+    playerXP: '1270.86'
+    countryCode: pe
+
+- teamID: 5014799
+  teamName: Nemiga Gaming
+  teamWins: 492
+  teamLosses: 447
+  teamRating: 1179.72
+  teamExperience: 14494.54
+  players:
+  - personaname: "\U0001F195"
+    playerXP: '917.34'
+    countryCode: ru
+  - personaname: facing reality
+    playerXP: '6670.11'
+    countryCode: ''
+  - personaname: aik~
+    playerXP: '430.13'
+    countryCode: ''
+  - personaname: Hellscream
+    playerXP: '3501.88'
+    countryCode: by
+  - personaname: Gift of Perseverance
+    playerXP: '336.04'
+    countryCode: rs
+  - personaname: kikyo
+    playerXP: '2533.84'
+    countryCode: kz
+  - personaname: tw/lukas_doto
+    playerXP: '105.20'
+    countryCode: ''
+
+- teamID: 9018664
+  teamName: Team Bright
+  teamWins: 103
+  teamLosses: 110
+  teamRating: 988.161
+  teamExperience: 12812.35
+  players:
+  - personaname: save
+    playerXP: '96.38'
+    countryCode: ''
+  - personaname: "\u6D45"
+    playerXP: '456.25'
+    countryCode: cn
+  - personaname: "\u5F7C \u5CB8 \u901D \u53BB"
+    playerXP: '446.41'
+    countryCode: ''
+  - personaname: Amani_
+    playerXP: '3509.82'
+    countryCode: ''
+  - personaname: Mode:bi an shi qu
+    playerXP: '3184.12'
+    countryCode: ''
+  - personaname: Calyrex
+    playerXP: '313.55'
+    countryCode: ''
+  - personaname: VURTNE
+    playerXP: '268.94'
+    countryCode: tf
+  - personaname: "\u3002\u3002\u3002"
+    playerXP: '2145.70'
+    countryCode: ''
+  - personaname: "\u6B27\u795E\u4ED9"
+    playerXP: '1323.72'
+    countryCode: ''
+  - personaname: "\u554A?"
+    playerXP: '1067.46'
+    countryCode: ''
+
+- teamID: 8588969
+  teamName: HYDRA
+  teamWins: 220
+  teamLosses: 175
+  teamRating: 1083.9
+  teamExperience: 12655.15
+  players:
+  - personaname: r0ad to 30lvl leshrac
+    playerXP: '78.51'
+    countryCode: ru
+  - personaname: '1'
+    playerXP: '769.15'
+    countryCode: ''
+  - personaname: One Chance
+    playerXP: '5086.61'
+    countryCode: ua
+  - personaname: Ethereal
+    playerXP: '503.40'
+    countryCode: ''
+  - personaname: Dao
+    playerXP: '496.16'
+    countryCode: ''
+  - personaname: tv/doctorbum
+    playerXP: '471.10'
+    countryCode: ''
+  - personaname: "\u043C\u0431\u044D\u0439\u043F"
+    playerXP: '353.92'
+    countryCode: by
+  - personaname: xsvamp1re
+    playerXP: '261.83'
+    countryCode: kz
+  - personaname: courteney cox prime
+    playerXP: '1723.92'
+    countryCode: ru
+  - personaname: Apex
+    playerXP: '1614.89'
+    countryCode: kg
+  - personaname: wannabee
+    playerXP: '1190.48'
+    countryCode: ru
+  - personaname: nn_
+    playerXP: '105.18'
+    countryCode: ru
+
+- teamID: 8597976
+  teamName: Talon
+  teamWins: 311
+  teamLosses: 211
+  teamRating: 1319.21
+  teamExperience: 12642.16
+  players:
+  - personaname: Katana
+    playerXP: '790.17'
+    countryCode: id
+  - personaname: papage
+    playerXP: '755.48'
+    countryCode: my
+  - personaname: Shenorita
+    playerXP: '3339.38'
+    countryCode: my
+  - personaname: YOUtopia
+    playerXP: '3264.92'
+    countryCode: id
+  - personaname: ChYuaN
+    playerXP: '2295.45'
+    countryCode: my
+  - personaname: Arthur leywin
+    playerXP: '2196.76'
+    countryCode: ph
+
+- teamID: 7119077
+  teamName: Hokori
+  teamWins: 322
+  teamLosses: 329
+  teamRating: 1043.2
+  teamExperience: 12306.68
+  players:
+  - personaname: 10 min player
+    playerXP: '501.31'
+    countryCode: ''
+  - personaname: Agent
+    playerXP: '491.55'
+    countryCode: pe
+  - personaname: Shadow
+    playerXP: '379.32'
+    countryCode: us
+  - personaname: He vuelto
+    playerXP: '3646.16'
+    countryCode: pe
+  - personaname: Paul Muad'Dib
+    playerXP: '2357.87'
+    countryCode: ''
+  - personaname: ..
+    playerXP: '1869.55'
+    countryCode: ''
+  - personaname: 0%
+    playerXP: '1664.81'
+    countryCode: pe
+  - personaname: Mirana
+    playerXP: '1396.11'
+    countryCode: pe
+
+- teamID: 3322951
+  teamName: LEVEL UP
+  teamWins: 94
+  teamLosses: 104
+  teamRating: 977.73
+  teamExperience: 12277.92
+  players:
+  - personaname: MiLAN
+    playerXP: '8764.47'
+    countryCode: ba
+  - personaname: f5
+    playerXP: '646.62'
+    countryCode: ru
+  - personaname: "Hitogami \u88CF\u5207\u308A\u306E\u795E"
+    playerXP: '2866.83'
+    countryCode: ua
+
+- teamID: 8376696
+  teamName: One Move
+  teamWins: 223
+  teamLosses: 199
+  teamRating: 1025.39
+  teamExperience: 11656.52
+  players:
+  - personaname: safelane bodyguard
+    playerXP: '956.37'
+    countryCode: ''
+  - personaname: munkushi~
+    playerXP: '814.52'
+    countryCode: by
+  - personaname: hell of a time
+    playerXP: '561.60'
+    countryCode: ''
+  - personaname: plague carrier
+    playerXP: '3656.78'
+    countryCode: ''
+  - personaname: fck
+    playerXP: '336.11'
+    countryCode: ru
+  - personaname: "\u043F\u0430\u0445\u043D\u0443 \u043A\u0430\u043A \u041C\u0435\u043B\
+      \u0438\u0441\u0441\u0430"
+    playerXP: '2807.29'
+    countryCode: ru
+  - personaname: dogerti
+    playerXP: '247.30'
+    countryCode: ru
+  - personaname: "\u041B\u0443\u0437\u0430\u044E \u0441 \u043A\u0430\u0439\u0444\u043E\
+      \u043C))"
+    playerXP: '1204.94'
+    countryCode: ''
+  - personaname: Xakoda
+    playerXP: '1071.61'
+    countryCode: ''
+
+- teamID: 8214850
+  teamName: BLEED
+  teamWins: 258
+  teamLosses: 229
+  teamRating: 1244.46
+  teamExperience: 11464.08
+  players:
+  - personaname: Bilguun
+    playerXP: '53.07'
+    countryCode: cn
+  - personaname: dj
+    playerXP: '3878.50'
+    countryCode: ph
+  - personaname: '?'
+    playerXP: '387.24'
+    countryCode: la
+  - personaname: Murasaki-
+    playerXP: '2391.93'
+    countryCode: th
+  - personaname: ahchin
+    playerXP: '2161.77'
+    countryCode: sg
+  - personaname: xiao xiao ba
+    playerXP: '1310.17'
+    countryCode: mn
+  - personaname: wsm
+    playerXP: '1281.40'
+    countryCode: my
+
+- teamID: 8971308
+  teamName: x5 Gaming
+  teamWins: 103
+  teamLosses: 102
+  teamRating: 922.359
+  teamExperience: 11242.92
+  players:
+  - personaname: K.O
+    playerXP: '875.03'
+    countryCode: ''
+  - personaname: "Bad Armi\xF1o"
+    playerXP: '599.32'
+    countryCode: br
+  - personaname: unprime (1hero pool)
+    playerXP: '513.14'
+    countryCode: pe
+  - personaname: I NEVER LOSE
+    playerXP: '48.56'
+    countryCode: br
+  - personaname: SIDALEIMAN
+    playerXP: '379.22'
+    countryCode: ''
+  - personaname: Given to Fly
+    playerXP: '3734.21'
+    countryCode: ar
+  - personaname: Yanbura
+    playerXP: '2528.96'
+    countryCode: br
+  - personaname: Chaika Trabant
+    playerXP: '225.86'
+    countryCode: ''
+  - personaname: me low iq uga uga
+    playerXP: '1193.69'
+    countryCode: br
+  - personaname: LFT 1/2
+    playerXP: '1144.93'
+    countryCode: br
+
+- teamID: 8936995
+  teamName: Team Rose
+  teamWins: 58
+  teamLosses: 59
+  teamRating: 1025.53
+  teamExperience: 11150.83
+  players:
+  - personaname: "\u4E18\u6BD4\u9F99\u662F\u6211\u6700\u7231\u7684\u8001\u5A46"
+    playerXP: '11150.83'
+    countryCode: my
+
+- teamID: 39
+  teamName: Shopify Rebellion
+  teamWins: 1459
+  teamLosses: 917
+  teamRating: 1308.92
+  teamExperience: 10437.88
+  players:
+  - personaname: ooooooooooo
+    playerXP: '91.38'
+    countryCode: ''
+  - personaname: ASD
+    playerXP: '3770.19'
+    countryCode: bg
+  - personaname: Rita
+    playerXP: '3331.04'
+    countryCode: br
+  - personaname: x)
+    playerXP: '2699.72'
+    countryCode: cz
+  - personaname: Rasmus?
+    playerXP: '248.66'
+    countryCode: ph
+  - personaname: ^_-
+    playerXP: '188.31'
+    countryCode: ''
+  - personaname: bye.
+    playerXP: '108.58'
+    countryCode: ca
+
+- teamID: 36
+  teamName: Natus Vincere
+  teamWins: 1191
+  teamLosses: 1002
+  teamRating: 1272.69
+  teamExperience: 10358.48
+  players:
+  - personaname: "\u3137\u3137"
+    playerXP: '405.33'
+    countryCode: mn
+  - personaname: antwoord
+    playerXP: '373.47'
+    countryCode: ua
+  - personaname: scarlet;,.`
+    playerXP: '36.30'
+    countryCode: ua
+  - personaname: 'mode: TERMinator'
+    playerXP: '3503.26'
+    countryCode: ''
+  - personaname: ATA
+    playerXP: '3340.84'
+    countryCode: kg
+  - personaname: dota 4
+    playerXP: '308.92'
+    countryCode: kz
+  - personaname: nefrit
+    playerXP: '2390.36'
+    countryCode: ua
+
+- teamID: 8375259
+  teamName: Infinity
+  teamWins: 310
+  teamLosses: 264
+  teamRating: 1217.49
+  teamExperience: 10268.07
+  players:
+  - personaname: Luwei
+    playerXP: '899.70'
+    countryCode: us
+  - personaname: Jason Statham
+    playerXP: '812.87'
+    countryCode: ''
+  - personaname: :)
+    playerXP: '493.72'
+    countryCode: pe
+  - personaname: goomoonryong
+    playerXP: '435.72'
+    countryCode: gs
+  - personaname: Cole-
+    playerXP: '350.43'
+    countryCode: ''
+  - personaname: Wafer
+    playerXP: '2100.00'
+    countryCode: ''
+  - personaname: cero f
+    playerXP: '1702.35'
+    countryCode: pe
+  - personaname: '-'
+    playerXP: '1199.44'
+    countryCode: pe
+  - personaname: larry
+    playerXP: '1161.33'
+    countryCode: pe
+  - personaname: SEPTMMXXIV
+    playerXP: '1112.51'
+    countryCode: pe

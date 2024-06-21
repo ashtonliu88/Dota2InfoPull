@@ -1,12 +1,13 @@
 body {
     font-family: 'Candara';
-    margin: 20px;
+    margin: 0;
     background-color: #1c2e4a;
     color: white;
     display: flex;
     justify-content: center;
-    flex-direction: column;
     align-items: center;
+    min-height: 100vh; /* Ensure the body takes the full height of the viewport */
+    flex-direction: column;
 }
 
 .header {
@@ -28,7 +29,7 @@ body {
     text-align: center;
     background-color: rgba(0, 0, 0, 0.5);
     font-size: 24px;
-    width: 80%;
+    width: 100%;
     max-width: 800px;
 }
 
@@ -62,7 +63,11 @@ body {
 
 #teams-container {
     width: 100%;
-    max-width: 800px;
+    max-width: 2000px;
     margin: 0 auto; /* Center the container horizontally */
     padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }

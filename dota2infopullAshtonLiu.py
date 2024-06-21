@@ -82,6 +82,7 @@ async def accessSpecificTeamData(session, teamID):
     #Retry time active in case server cant obtain info
     retries = 10
 
+
     #Classifying for loop to give the program 10 retries if status code is not 200
     for attempt in range(retries):
 
