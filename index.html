@@ -14,7 +14,7 @@
     </div>
     <div id="teams-container"></div>
 
-    
+
     <script>
         // Fetching YAML file
         fetch('output.yaml')
@@ -47,6 +47,8 @@
                     `;
                     playersContainer.appendChild(playerDiv);
                 });
+
+                playersContainer.style.display = 'none';
 
                 // Add event listener for the players header
                 const playersHeader = teamDiv.querySelector('.players-header');

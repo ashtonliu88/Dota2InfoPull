@@ -1,5 +1,5 @@
 body {
-    font-family: '', serif;
+    font-family: 'Futura', serif;
     margin: 0;
     background-color: #1c2e4a;
     color: white;
@@ -28,20 +28,20 @@ body {
     border-radius: 5px;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.5);
-    font-size: 24px;
-    width: 100%;
-    max-width: 800px;
+    font-size: 20px;
+    width: calc(100vw - 40px); /* Adjust width dynamically */
+    max-width: 1000px; /* Set a maximum width for larger screens */
 }
 
 .team h2 {
     margin-top: 0;
-    font-size: 75px;
+    font-size: 50px;
     margin-bottom: 10px;
 }
 
 .team h3 {
     margin-top: 0;
-    font-size: 55px;
+    font-size: 30px;
     margin-bottom: 10px;
     text-decoration: underline;
     cursor: pointer;
@@ -63,11 +63,23 @@ body {
 
 #teams-container {
     width: 100%;
-    max-width: 2000px;
+    max-width: 1000px;
     margin: 0 auto; /* Center the container horizontally */
     padding: 20px;
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap; /* Allow teams to wrap to the next line */
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 1200px) {
+    .team {
+        width: calc(100vw - 20px); /* Adjust width for smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .team {
+        width: calc(100vw - 10px); /* Adjust width for mobile screens */
+    }
 }
