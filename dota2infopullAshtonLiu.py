@@ -33,7 +33,7 @@ homeURL = "https://api.opendota.com/api"
 #Furthermore, if a user wants to access the leaderboard multiple times in a row and I don't set up a cache system, they would be met with invalid
 #response codes because there would be too many request in a given time period.
 cacheFile = "cache.json"
-cacheDuration = timedelta(minutes=10)
+cacheDuration = timedelta(minutes=1000)
 
 #Retry codes implemented to check if error occurs in response status code
 #Stack overflow: https://stackoverflow.com/questions/61463224/when-to-use-raise-for-status-vs-status-code-testing for reference
@@ -65,8 +65,8 @@ def accessProPlayers():
 # Function to calculate exponential backoff with jitter
 def exponential_backoff_with_jitter(attempt):
     
-    base_delay=10
-    max_delay=30
+    base_delay=3
+    max_delay=60
 
     delay = base_delay * (2 ** attempt)
     jitter = random.uniform(0, 1)
@@ -82,7 +82,7 @@ async def accessSpecificTeamData(session, teamID):
     #Retry time active in case server cant obtain info
     retries = 10
 
-    #Classifying for loop to give the program 3 retries if status code is not 200
+    #Classifying for loop to give the program 10 retries if status code is not 200
     for attempt in range(retries):
 
         try:
@@ -214,7 +214,7 @@ async def obtainProTeams():
                 })
 
         allPlayersInfo = sorted(allPlayersInfo, key=lambda x: x['playerXP'], reverse=True)
-        
+
         teamXP = round(teamXP, 2)
 
         #Create the dictionary for each new team accounted for

@@ -3,15 +3,23 @@ body {
     margin: 20px;
     background-color: #1c2e4a;
     color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
+
 .header {
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
 }
+
 .header img {
     height: 50px;
     margin-right: 10px;
 }
+
 .team {
     border: 5px solid #ccc;
     padding: 15px;
@@ -20,21 +28,41 @@ body {
     text-align: center;
     background-color: rgba(0, 0, 0, 0.5);
     font-size: 24px;
+    width: 80%;
+    max-width: 800px;
 }
+
 .team h2 {
     margin-top: 0;
-    text-align:center;
     font-size: 75px;
     margin-bottom: 10px;
 }
+
 .team h3 {
     margin-top: 0;
-    text-align:center;
     font-size: 55px;
     margin-bottom: 10px;
     text-decoration: underline;
+    cursor: pointer;
 }
-.player {
+
+.players-container {
+    display: none;
+    text-align: left;
     margin-left: 20px;
-    text-align:center;
+}
+
+.players-header {
+    font-size: 100px;
+}
+
+.player {
+    font-size: 20px; /* Adjust font size if necessary */
+}
+
+#teams-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px;
 }

@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top N Teams Dota 2 Viewer</title>
-    <link rel="stylesheet" href = "css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
 </head>
-
 <body>
-
     <div class="header">
         <img src="photos/Dota-2-Logo.png" alt="Dota 2 Logo">
         <h1>Top N Pro Teams in DOTA 2 (Built by Ashton Liu)</h1>
@@ -26,25 +24,35 @@
             })
             .catch(error => console.error('Error fetching the YAML file:', error));
 
-        //This function renders teams to HTML
+        // This function renders teams to HTML
         function renderTeams(teams) {
             const container = document.getElementById('teams-container');
+            
             teams.forEach((team, index) => {
                 const teamDiv = document.createElement('div');
                 teamDiv.classList.add('team');
                 teamDiv.innerHTML = `
                     <h2>${index + 1}. ${team.teamName}</h2>
                     <p><strong>ID:</strong> ${team.teamID} | <strong>Wins:</strong> ${team.teamWins} | <strong>Losses:</strong> ${team.teamLosses} | <strong>Rating:</strong> ${team.teamRating} | <strong>Team Experience:</strong> ${team.teamExperience} hours</p>
-                    <h3>Players:</h3>
+                    <h3 class="players-header">View List of Players:</h3>
+                    <div class="players-container"></div>
                 `;
-                team.players.forEach((player, index) => {
+                const playersContainer = teamDiv.querySelector('.players-container');
+                team.players.forEach((player, playerIndex) => {
                     const playerDiv = document.createElement('div');
                     playerDiv.classList.add('player');
                     playerDiv.innerHTML = `
-                        <p>${index + 1}. <strong>Name:</strong> ${player.personaname} | <strong>Experience:</strong> ${player.playerXP} hours | <strong>Country:</strong> ${player.countryCode}</p>
+                        <p>${playerIndex + 1}. <strong>Name:</strong> ${player.personaname} | <strong>Experience:</strong> ${player.playerXP} hours | <strong>Country:</strong> ${player.countryCode}</p>
                     `;
-                    teamDiv.appendChild(playerDiv);
+                    playersContainer.appendChild(playerDiv);
                 });
+
+                // Add event listener for the players header
+                const playersHeader = teamDiv.querySelector('.players-header');
+                playersHeader.addEventListener('click', () => {
+                    playersContainer.style.display = playersContainer.style.display === 'none' ? 'block' : 'none';
+                });
+
                 container.appendChild(teamDiv);
             });
         }
