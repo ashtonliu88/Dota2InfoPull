@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
 </head>
+
 <body>
     <div class="header">
         <img src="photos/Dota-2-Logo.png" alt="Dota 2 Logo">
@@ -16,8 +17,10 @@
 
 
     <script>
+
         // Fetching YAML file
         fetch('output.yaml')
+
             .then(response => response.text())
             .then(yamlText => {
                 const data = jsyaml.load(yamlText);
@@ -28,7 +31,7 @@
         // This function renders teams to HTML
         function renderTeams(teams) {
             const container = document.getElementById('teams-container');
-            
+            //Viewing the list of teams, making it into leaderboard blocks
             teams.forEach((team, index) => {
                 const teamDiv = document.createElement('div');
                 teamDiv.classList.add('team');
@@ -50,7 +53,7 @@
 
                 playersContainer.style.display = 'none';
 
-                // Add event listener for the players header
+                //Adding a dropdown to list of players to make it neater
                 const playersHeader = teamDiv.querySelector('.players-header');
                 playersHeader.addEventListener('click', () => {
                     playersContainer.style.display = playersContainer.style.display === 'none' ? 'block' : 'none';

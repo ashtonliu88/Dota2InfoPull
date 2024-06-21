@@ -32,8 +32,9 @@ homeURL = "https://api.opendota.com/api"
 #the system doesn't crash.
 #Furthermore, if a user wants to access the leaderboard multiple times in a row and I don't set up a cache system, they would be met with invalid
 #response codes because there would be too many request in a given time period.
+#20 minutes seems like a good amount of time to refresh the cache just in case any faults occur
 cacheFile = "cache.json"
-cacheDuration = timedelta(minutes=1000)
+cacheDuration = timedelta(minutes=20)
 
 #Retry codes implemented to check if error occurs in response status code
 #Stack overflow: https://stackoverflow.com/questions/61463224/when-to-use-raise-for-status-vs-status-code-testing for reference
@@ -229,6 +230,8 @@ async def obtainProTeams():
             'players': allPlayersInfo
         }
 
+    #I found errors in the list of pro teams so this function filters the list to make sure that 
+    #teams without any players are not included in the final output
     filteredTeamXPDictionary = {team_id: team_data for team_id, team_data in teamXPDictionary.items() if team_data.get('players')}
 
     return filteredTeamXPDictionary

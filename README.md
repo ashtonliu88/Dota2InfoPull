@@ -19,3 +19,5 @@ Then type http://localhost:8000/index.html in any web browser to view as a websi
 Once this localhost is set up, create a new terminal and run the file as many times as you want with its arguments
 
 Wait a few seconds and refresh the page after each save into the yaml file
+
+WARNING: Obtaining new cache data may take a few seconds due to 60 call per minute limit
