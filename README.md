@@ -24,4 +24,4 @@ Once this localhost is set up, create a new terminal and run the file as many ti
 
 Wait a few seconds and refresh the page after each save into the yaml file
 
-: Obtaining new cache data may take a few seconds due to 60 call per minute limit
+WARNING: Obtaining new cache data may take a few seconds due to 60 call per minute limit
